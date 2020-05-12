@@ -1,3 +1,4 @@
 rootProject.name = 'jsong-mall'
 
-
+include('mall-com.jsong.common')
+include('mall-pay')

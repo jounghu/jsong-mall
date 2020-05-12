@@ -1,0 +1,37 @@
+plugins{
+    id 'java'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
+
+group 'com.jounghu.jsong-mall'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    // mysql
+    runtime("mysql:mysql-connector-java")
+    // druid
+    implementation('com.alibaba:druid-spring-boot-starter:1.1.10')
+    // spring boot economic
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+    implementation ('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation ('org.springframework.boot:spring-boot-starter-mail')
+    implementation ('org.springframework.boot:spring-boot-starter-data-redis')
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation ('org.springframework.boot:spring-boot-starter-test')
+    // lombok
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testCompileOnly('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+}
+
+springBoot {
+    mainClassName = 'com.jsong.JPayApplication'
+}
