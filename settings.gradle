@@ -1,4 +1,17 @@
 rootProject.name = 'jsong-mall'
 
-include('mall-com.jsong.common')
 include('mall-pay')
+include('mall-sso')
+include('mall-gen')
+include('mall-gen-comment')
+include('mall-common')
+
+// service 实现
+include('mall-service')
+include('mall-service:mall-cart-service')
+include('mall-service:mall-order-service')
+include('mall-service:mall-search-service')
+
+// 服务定义
+include('mall-service-api')
+include('mall-service-api:mall-user-service-api')

@@ -1,14 +1,59 @@
-plugins {
+plugins{
     id 'java'
+    id 'idea'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id "com.thinkimi.gradle.MybatisGenerator" version "2.2"
 }
 
-group 'com.jounghu.jsong-mall'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        // 本地仓库
+        maven {
+            url 'F:\\DevTool\\apache-maven-3.5.3\\repo'
+        }
+        // 阿里云仓库
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+subprojects { subproj ->
+    if (name.startsWith('mall-gen')) {
+        apply plugin: 'com.thinkimi.gradle.MybatisGenerator'
+    }
+
+    if (name.startsWith('mall-gen-comment')) {
+        apply plugin: 'com.github.johnrengelman.shadow'
+    }
+
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'maven-publish'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    group ='com.jsong.mall'
+    // JVM 版本号要求
+    sourceCompatibility =1.8
+
+    targetCompatibility =1.8
+
+    bootJar {
+        enabled =false  // 默认不需要打可执行jar包
+    }
+
+    // 配置编译编码
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    dependencies {
+        // lombok
+        compileOnly('org.projectlombok:lombok')
+        annotationProcessor('org.projectlombok:lombok')
+        testCompileOnly('org.projectlombok:lombok')
+        testAnnotationProcessor('org.projectlombok:lombok')
+    }
 }
