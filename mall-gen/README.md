@@ -17,3 +17,5 @@ task mybatisGenerate {}
 ```
 
 然后build完毕之后，打开这个task执行，就会生成对应的mapper
+
+如需生成文件则需要`gradle mybatisGenerate -Pgen` 带上`gen`参数
