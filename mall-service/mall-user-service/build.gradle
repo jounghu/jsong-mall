@@ -1,0 +1,5 @@
+version '1.0.0'
+
+dependencies {
+    compile project(':mall-service-api:mall-user-service-api')
+}

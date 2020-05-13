@@ -1,10 +1,18 @@
 version '1.0.0'
 
-dependencies {
-
-}
-
 
 subprojects {
+    dependencies {
+        // mysql
+        runtime("mysql:mysql-connector-java")
+        // druid
+        implementation('com.alibaba:druid-spring-boot-starter:1.1.10')
+        // spring boot economic
+        implementation ('org.springframework.boot:spring-boot-starter-web')
+        implementation ('org.springframework.boot:spring-boot-starter-data-redis')
+        testImplementation ('org.springframework.boot:spring-boot-starter-test')
 
+        // mybatis
+        implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1")
+    }
 }
