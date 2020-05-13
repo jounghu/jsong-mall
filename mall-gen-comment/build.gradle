@@ -1,0 +1,31 @@
+version '1.0.0'
+
+dependencies {
+    implementation("org.mybatis.generator:mybatis-generator-core:1.3.5")
+}
+
+repositories {
+    maven {
+        url 'F:\\DevTool\\apache-maven-3.5.3\\repo'
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "${project.group}"
+            artifactId = "mall-gen-comment"
+            version = version
+            artifacts=["$buildDir/libs/${artifactId}-${version}.jar"]
+        }
+    }
+    repositories {
+        maven {
+            url 'F:\\DevTool\\apache-maven-3.5.3\\repo'
+        }
+
+    }
+}
+
+publish.dependsOn(shadowJar)
+

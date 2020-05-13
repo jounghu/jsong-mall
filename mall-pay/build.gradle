@@ -1,16 +1,8 @@
-plugins{
-    id 'java'
-    id 'org.springframework.boot' version '2.1.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
-}
 
-group 'com.jounghu.jsong-mall'
+group "${project.group}"
 version '1.0-SNAPSHOT'
 
 
-repositories {
-    mavenCentral()
-}
 
 
 dependencies {
